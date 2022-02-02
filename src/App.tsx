@@ -38,6 +38,7 @@ function App() {
     if (turn === Turn.PC) {
       PCTurn();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turnCount, turn]);
 
   const handleClick = async (color: Color) => {

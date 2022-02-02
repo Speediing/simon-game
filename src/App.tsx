@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import { Color } from "./utils/enums/Colors";
 import { Turn } from "./utils/enums/Turn";
@@ -20,9 +20,9 @@ function App() {
     if (turn === Turn.PC) {
       PCTurn();
     }
-  }, [turnCount]);
+  }, [turnCount, turn]);
 
-  const PCTurn = async () => {
+  const PCTurn = useCallback(async () => {
     applyHighScore();
     await timeout(1000);
     for (let turnIndex = 0; turnIndex < turnCount; turnIndex++) {
@@ -39,7 +39,7 @@ function App() {
       }
     }
     setTurn(Turn.Player);
-  };
+  }, []);
 
   const handleClick = async (color: Color) => {
     if (turn === Turn.Player) {

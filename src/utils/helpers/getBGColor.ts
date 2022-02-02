@@ -4,13 +4,13 @@ export const getBGColor = (color: Color, randColor: Color | null) => {
   if (randColor === color) {
     switch (color) {
       case Color.Blue:
-        return "bg-blue-600";
+        return "bg-blue-400";
       case Color.Green:
-        return "bg-green-600";
+        return "bg-green-400";
       case Color.Red:
-        return "bg-red-600";
+        return "bg-red-400";
       case Color.Yellow:
-        return "bg-orange-600";
+        return "bg-orange-400";
       default:
         break;
     }
@@ -18,13 +18,13 @@ export const getBGColor = (color: Color, randColor: Color | null) => {
   if (color !== null)
     switch (color) {
       case Color.Blue:
-        return "bg-blue-100 active:bg-blue-600 b-5 border-blue-600";
+        return "bg-black active:bg-blue-400 border border-blue-400";
       case Color.Green:
-        return "bg-green-100 active:bg-green-600 border-green-600";
+        return "bg-black active:bg-green-400 border border-green-400";
       case Color.Red:
-        return "bg-red-100 active:bg-red-600 border-red-600";
+        return "bg-black active:bg-red-400 border border-red-400";
       case Color.Yellow:
-        return "bg-orange-100 active:bg-orange-600 border-orange-600";
+        return "bg-black active:bg-orange-400 border border-orange-400";
       default:
         break;
     }

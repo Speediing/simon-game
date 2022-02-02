@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Color } from "./utils/enums/Colors";
 import { Turn } from "./utils/enums/Turn";
@@ -17,29 +17,28 @@ function App() {
   const [userTurn, setUserTurn] = useState<Color[]>([]);
 
   useEffect(() => {
+    const PCTurn = async () => {
+      applyHighScore();
+      await timeout(1000);
+      for (let turnIndex = 0; turnIndex < turnCount; turnIndex++) {
+        let color =
+          turnIndex === turnCount - 1
+            ? getRandomInt()
+            : randColorHistory[turnIndex];
+        setRandColor(color);
+        await timeout(1500);
+        setRandColor(null);
+        await timeout(1500);
+        if (turnIndex === turnCount - 1) {
+          setRandColorHistory([...randColorHistory, color]);
+        }
+      }
+      setTurn(Turn.Player);
+    };
     if (turn === Turn.PC) {
       PCTurn();
     }
   }, [turnCount, turn]);
-
-  const PCTurn = useCallback(async () => {
-    applyHighScore();
-    await timeout(1000);
-    for (let turnIndex = 0; turnIndex < turnCount; turnIndex++) {
-      let color =
-        turnIndex === turnCount - 1
-          ? getRandomInt()
-          : randColorHistory[turnIndex];
-      setRandColor(color);
-      await timeout(1500);
-      setRandColor(null);
-      await timeout(1500);
-      if (turnIndex === turnCount - 1) {
-        setRandColorHistory([...randColorHistory, color]);
-      }
-    }
-    setTurn(Turn.Player);
-  }, []);
 
   const handleClick = async (color: Color) => {
     if (turn === Turn.Player) {

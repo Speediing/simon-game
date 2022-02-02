@@ -26,10 +26,16 @@ function Header({ turn, turnCount, highScore }: HeaderProps) {
       </h2>
       <div className="flex justify-center gap-8">
         <p className="mt-4  text-center text-xl text-gray-300">
-          {`Turncount: ${turnCount}`}
+          {`Turncount: `}
+          <span className="mt-4  text-center font-bold text-xl text-white">
+            {turnCount}
+          </span>
         </p>
         <p className="mt-4 text-center text-xl text-gray-300">
-          {`High Score: ${highScore}`}
+          {`High Score: `}
+          <span className="mt-4  text-center font-bold text-xl text-white">
+            {highScore}
+          </span>
         </p>
       </div>
     </div>

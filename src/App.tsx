@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
 import { Color } from "./utils/enums/Colors";
 import { Turn } from "./utils/enums/Turn";
@@ -7,12 +7,16 @@ import { timeout } from "./utils/helpers/timeout";
 import Header from "./components/Header";
 import ColorGrid from "./components/ColorGrid";
 import { isGameOver } from "./utils/helpers/isGameOver";
+import {
+  TurnAction,
+  turnCountReducer,
+} from "./utils/reducers/turnCountReducer";
 
 function App() {
   const [turn, setTurn] = useState(Turn.PC);
   const [randColor, setRandColor] = useState<Color | null>(null);
   const [randColorHistory, setRandColorHistory] = useState<Color[]>([]);
-  const [turnCount, setTurnCount] = useState(1);
+  const [turnCount, setTurnCount] = useReducer(turnCountReducer, 1);
   const [highScore, setHighScore] = useState(1);
   const [userTurn, setUserTurn] = useState<Color[]>([]);
 
@@ -65,13 +69,13 @@ function App() {
     setUserTurn([]);
     setRandColorHistory([]);
     setTurn(Turn.PC);
-    setTurnCount(1);
+    setTurnCount(TurnAction.Reset);
   };
 
   const newTurn = () => {
     setUserTurn([]);
     setTurn(Turn.PC);
-    setTurnCount(turnCount + 1);
+    setTurnCount(TurnAction.Increment);
   };
 
   return (

@@ -8,12 +8,13 @@ import Header from "./components/Header";
 import ColorGrid from "./components/ColorGrid";
 import { isGameOver } from "./utils/helpers/isGameOver";
 import {
-  TurnAction,
+  TurnCountAction,
   turnCountReducer,
 } from "./utils/reducers/turnCountReducer";
+import { TurnAction, turnReducer } from "./utils/reducers/turnReducer";
 
 function App() {
-  const [turn, setTurn] = useState(Turn.PC);
+  const [turn, setTurn] = useReducer(turnReducer, Turn.PC);
   const [randColor, setRandColor] = useState<Color | null>(null);
   const [randColorHistory, setRandColorHistory] = useState<Color[]>([]);
   const [turnCount, setTurnCount] = useReducer(turnCountReducer, 1);
@@ -37,7 +38,7 @@ function App() {
           setRandColorHistory([...randColorHistory, color]);
         }
       }
-      setTurn(Turn.Player);
+      setTurn(TurnAction.Switch);
     };
     if (turn === Turn.PC) {
       PCTurn();
@@ -68,14 +69,14 @@ function App() {
   const resetGame = () => {
     setUserTurn([]);
     setRandColorHistory([]);
-    setTurn(Turn.PC);
-    setTurnCount(TurnAction.Reset);
+    setTurn(TurnAction.Switch);
+    setTurnCount(TurnCountAction.Reset);
   };
 
   const newTurn = () => {
     setUserTurn([]);
-    setTurn(Turn.PC);
-    setTurnCount(TurnAction.Increment);
+    setTurn(TurnAction.Switch);
+    setTurnCount(TurnCountAction.Increment);
   };
 
   return (

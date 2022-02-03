@@ -1,13 +1,13 @@
-export enum TurnAction {
+export enum TurnCountAction {
   Increment,
   Reset,
 }
 
-export const turnCountReducer = (state: number, action: TurnAction) => {
+export const turnCountReducer = (state: number, action: TurnCountAction) => {
   switch (action) {
-    case TurnAction.Increment:
+    case TurnCountAction.Increment:
       return state + 1;
-    case TurnAction.Reset:
+    case TurnCountAction.Reset:
       return 1;
     default:
       break;

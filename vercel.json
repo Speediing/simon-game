@@ -1,5 +1,5 @@
 {
     "redirects": [
-      { "source": "/", "destination": "/react" }
+      { "source": "/react/static", "destination": "/static" }
     ]
   }

@@ -1,9 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
-      "has": [],
-      "destination": "/blog/(.*)",
+      "source": "/asdf/:slug",
+      "destination": "/blog/:slug",
       "permanent": true
     },
     {

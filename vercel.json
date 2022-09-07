@@ -1,29 +1,23 @@
 {
   "redirects": [
     {
-      "source": "/^(?:\\/(.*))[\\/#\\?]?$/i",
+      "source": "/(.*)",
       "has": [],
-      "destination": "/^\\/blog(?:\\/([^\\/#\\?]+?))[\\/#\\?]?$/i",
+      "destination": "/blog/:splat",
       "permanent": true
     },
     {
-      "source": "/^\\/old-path[\\/#\\?]?$/i",
+      "source": "/old-path",
       "has": [
         { "type": "query", "key": "id" },
         { "type": "cookie", "key": "is_legacy", "value": "*" },
         { "type": "cookie", "key": "my_other_cookie", "value": "*" }
       ],
-      "destination": "/^\\/new-path[\\/#\\?]?$/i",
+      "destination": "/new-path",
       "permanent": false
     }
   ],
-  "rewrites": [
-    {
-      "source": "/^(?:\\/(.*))[\\/#\\?]?$/i",
-      "has": [],
-      "destination": "/^\\/index\\.html[\\/#\\?]?$/i"
-    }
-  ],
+  "rewrites": [{ "source": "/(.*)", "has": [], "destination": "/index.html" }],
   "headers": [
     {
       "source": "/*",

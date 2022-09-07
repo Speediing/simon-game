@@ -1,23 +1,14 @@
 {
   "redirects": [
-    {
-      "source": "/asdf/:slug",
-      "has": [],
-      "destination": "/blog/:slug",
-      "permanent": true
-    },
+    { "source": "/(.*)", "destination": "/blog/(.*)", "permanent": true },
     {
       "source": "/old-path",
-      "has": [
-        { "type": "query", "key": "id" },
-        { "type": "cookie", "key": "is_legacy", "value": "*" },
-        { "type": "cookie", "key": "my_other_cookie", "value": "*" }
-      ],
       "destination": "/new-path",
+      "has": false,
       "permanent": false
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "has": [], "destination": "/index.html" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "headers": [
     {
       "source": "/(.*)",

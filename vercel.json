@@ -4,7 +4,11 @@
     {
       "source": "/old-path",
       "destination": "/new-path",
-      "has": false,
+      "has": [
+        { "type": "query", "key": "id" },
+        { "type": "cookie", "key": "is_legacy", "value": "*" },
+        { "type": "cookie", "key": "my_other_cookie", "value": "*" }
+      ],
       "permanent": false
     }
   ],
@@ -29,5 +33,7 @@
         }
       ]
     }
-  ]
+  ],
+  "outputDirectory": "build-output/",
+  "buildCommand": "echo 'default context'"
 }

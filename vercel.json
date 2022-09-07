@@ -1,6 +1,11 @@
 {
   "redirects": [
-    { "source": "/*", "has": [], "destination": "/blog/:splat" },
+    {
+      "source": "/*",
+      "has": [],
+      "destination": "/blog/:splat",
+      "permanent": true
+    },
     {
       "source": "/old-path",
       "has": [
@@ -8,13 +13,11 @@
         { "type": "cookie", "key": "is_legacy", "value": "*" },
         { "type": "cookie", "key": "my_other_cookie", "value": "*" }
       ],
-      "destination": "/new-path"
+      "destination": "/new-path",
+      "permanent": false
     }
   ],
-  "rewrites": [
-    { "source": "/gated-path", "has": [] },
-    { "source": "/*", "has": [], "destination": "/index.html" }
-  ],
+  "rewrites": [{ "source": "/*", "has": [], "destination": "/index.html" }],
   "headers": [
     {
       "source": "/*",

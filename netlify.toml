@@ -1,8 +1,5 @@
 
 [build]
-  base    = "project/"
-  publish = "project/build-output/"
-  command = "echo 'default context'"
   ignore = "git diff --quiet HEAD^ HEAD sub_dir/"
 
 [[redirects]]
